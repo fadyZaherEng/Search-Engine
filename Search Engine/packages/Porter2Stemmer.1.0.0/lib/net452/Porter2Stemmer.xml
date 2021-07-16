@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Porter2Stemmer</name>
+    </assembly>
+    <members>
+        <member name="T:Porter2Stemmer.EnglishPorter2Stemmer">
+            <summary>
+            Based off of the improved Porter2 algorithm:
+            http://snowball.tartarus.org/algorithms/english/stemmer.html
+            </summary>
+        </member>
+        <member name="M:Porter2Stemmer.EnglishPorter2Stemmer.TrimStartingApostrophe(System.String)">
+            <summary>
+            The English stemmer treats apostrophe as a letter, removing it from the beginning of a word, where it might have stood for an opening quote, from the end of the word, where it might have stood for a closing quote, or been an apostrophe following s.
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Porter2Stemmer.EnglishPorter2Stemmer.GetRegion1(System.String)">
+            <summary>
+            R1 is the region after the first non-vowel following a vowel, or the end of the word if there is no such non-vowel. 
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Porter2Stemmer.EnglishPorter2Stemmer.GetRegion2(System.String)">
+            <summary>
+            R2 is the region after the first non-vowel following a vowel in R1, or the end of the word if there is no such non-vowel. 
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Porter2Stemmer.EnglishPorter2Stemmer.EndsInShortSyllable(System.String)">
+            <summary>
+            Define a short syllable in a word as either (a) a vowel followed 
+            by a non-vowel other than w, x or Y and preceded by a non-vowel, 
+            or * (b) a vowel at the beginning of the word followed by a non-vowel. 
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Porter2Stemmer.EnglishPorter2Stemmer.IsShortWord(System.String)">
+            <summary>
+            A word is called short if it ends in a short syllable, and if R1 is null.
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Porter2Stemmer.EnglishPorter2Stemmer.MarkYsAsConsonants(System.String)">
+            <summary>
+            Set initial y, or y after a vowel, to Y
+            </summary>
+            <param name="word"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Porter2Stemmer.IPorter2Stemmer.Vowels">
+            <summary>
+            Vowel characters used for stemming.
+            </summary>
+        </member>
+        <member name="P:Porter2Stemmer.IPorter2Stemmer.Doubles">
+            <summary>
+            Valid doubled letters used for stemming.
+            </summary>
+        </member>
+        <member name="P:Porter2Stemmer.IPorter2Stemmer.LiEndings">
+            <summary>
+            Li- endings used for stemming.
+            </summary>
+        </member>
+        <member name="M:Porter2Stemmer.IPorter2Stemmer.GetRegion1(System.String)">
+            <summary>
+            R1 is the region after the first non-vowel following a vowel, 
+            or the end of the word if there is no such non-vowel. 
+            This definition may be modified for certain exceptional words.
+            </summary>
+        </member>
+        <member name="M:Porter2Stemmer.IPorter2Stemmer.GetRegion2(System.String)">
+            <summary>
+            R2 is the region after the first non-vowel following a vowel in 
+            R1, or the end of the word if there is no such non-vowel.
+            </summary>
+        </member>
+        <member name="M:Porter2Stemmer.IStemmer.Stem(System.String)">
+            <summary>
+            Stem a word.
+            </summary>
+            <param name="word">Word to stem.</param>
+            <returns>
+            The stemmed word, with a reference to the original unstemmed word.
+            </returns>
+        </member>
+    </members>
+</doc>
